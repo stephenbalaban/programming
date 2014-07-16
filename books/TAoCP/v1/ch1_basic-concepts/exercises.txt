@@ -1,0 +1,229 @@
+# Ch1 Exercies
+Tue Oct 23 11:32:57 PDT 2012
+
+## 1.1 Algorithms
+
+1. [10] The text showed how to interchange the values of variables m and n,
+   using the replacement notation, by setting t <= m, m <= n, n <= t. Show how
+   the values of four variables (a,b,c,d) can be rearranged to (b,c,d,a) by
+   a sequence of replacements.
+
+   t <= a
+   a <= b
+   b <= c
+   c <= d
+   d <= t
+
+2. [15] Prove that m is always greater than n at the beginning of step E1,
+   except possibly the first time this step occurs.
+
+   Starting after the first occurrence, the m and n from the first step of e1
+   is an n value and the remainder of m and n. By definition, the remainder
+   must be strictly greater than both m and n. Thus, the m value will always be
+   strictly greater than then n value after the first occurrence.
+
+3. [20] Change Algorithm E (for the sake of efficiency) so that all trivial
+   replacement operations such as m <= n are avoided. Write this new algorithm
+   in the style of Algorihtm E, and call it Algorithm F.
+
+   Algorithm F (Euclid's algorithm rev.). Given two positive integers m and n,
+   find their greatest common divisor, i.e., the largest positive integer that
+   evenly divides both m and n.
+
+   E1 If the remainder of m and n is zero, terminate. n is the result
+   E2 m <= n, n <= the remainder of m and n
+
+
+4. [16] What is the greatest common divisor of 2166 and 6099? Solved by hand.
+   i    m       n       r
+   0    2166    6099    2166
+   1    6099    2166    1767    ;; 6099 - (2 * 2166 = 4332)
+                                   4332
+                                   1767
+   2    2166    1767    399 
+   3    1767    399     171     ;; 1767 - (4 * 399 = 1600 - 4 = 1596)
+   4    399     171     57      ;; 399 - 342 57 
+   5    171     57      0       ;; 171 / 57 = 3
+   r = 0, terminate & return n 
+   result (57)
+
+6. [20] What is T_5, the average number of steps E1 is performed when n = 5?
+
+9. [M30] Suppose that C1 = (Q1, I1, O1, f1) and C2 = (Q2, I2, O2, f2)
+
+    C2 implements C1 <=>
+        \forall i1 in I1, o1 in O1
+            f1(i1) in O1 -> i1 in I1 and f1(i1) in O2
+
+
+## 1.2 Mathematical Preliminaries
+
+5. [21] A prime nubmer is an integer > 1 that has no exact divisors other than
+   1 and itself. Using this definition and mathematical induction, prove that
+   every integer > 1 may be written as a product of one or more prime numbers.
+
+   a * b = integer
+   prime = prime * 1
+
+   if the integer is prime, done
+
+8. [25] (a) Prove the following theorem of Nicomachus (A.D. c. 100) by induction:       1^3 = 1, 
+       2^3 = 3 + 5, 
+       3^3 = 7 + 9 + 11,
+       4^3 = 13 + 15 + 17 + 19,
+       ...
+       n^3 = (n^2 - n + 1) + (n^2 - n + 3) + ... + (n^2 + n - 1)
+       n * n * n + x = (n + 1) (n + 1) (n + 1)
+                     = n^2 + 2n + 2 (n + 1)
+                     = n^3 + n^2 + 2n^2 + 2n + 2n + 2
+                   x = n^3 + 2n^2 + 4n + 2 - n^3
+                     = 2n^2 + 4n + 2
+                     so lets add this to both sides
+
+# 1.2.2 Numbers, Powers, and Logarithms
+
+1. [00] What is the smallest positive rational number?
+    1/infinity
+2. [00]] Is 1 + 0.2399999999.... a decimal expansion?
+    Yes?
+3. [02] What is (-3)^{-3}
+    1 / -3^3 = -1 / 27
+4. [05] What is (0.125)^{-2/3}
+    (1/8)^{-2/3}
+    (2^-3}^{-2/3} = 2^{6/3} = 4
+5. [05] We defined real numbers in terms of a decimal expansion. Discuss how we
+   could have defiend htem in terms of a binary expansion instead, and give
+   a definition to replace Eq. (2) 
+   [n + d1/10 + d2/100 + ... + dk/10k <= x < n + d1/10 + d2/100 + ... + dk/10^k + 1/10^k]
+
+    b + d1/2 + d2/4 + ... + dk/2^k <= x < b + d1/2 + d2/4 + ... + dk/2^k + 1/2^k
+6. [10] Let x = m + 0.d1d2... and y = n + 0.e1e1... be real numbers. Give
+   a rule for determining whether x = y, x < y, or x > y, based on the decimal
+   representation.
+
+    lets imagine that the number is represented as a linked list
+    gle m n
+        if m == nil and n == nil
+            return 0
+        else if m > n
+            return 1
+        else if m < n
+            return -1
+        else return gle m.next n.next
+
+7. [M23] Given that x and y are integers, prove the laws of exponents, starting
+   from the definition given by Eq. (4)
+
+   b^0 = 1, b^n = b^{n-1}b  if n > 0,       b^n = b^{n+1} / b   if n < 0
+
+   Prove b^{x+y} = b^x b^y, (b^x)^y = b^{xy}
+
+   Assume b^{x+y} = b^x b^y, and show it implies b^{x+y+1} = b^x * b^y * b^1
+
+   b^0 = 1
+   b^n = b^{n-1} * b^1              ; given assumption of b^{x+y} = b^x b^y
+   b^{n+1} = b^{n-1} * b^1 * b^1    ; see above 
+   b^{n+1} = b^n * b^1              ; with assumption
+   b^{n+1} = b^{n} * b^1            ; QED
+
+10. [18] Prove that log_10 2 is not a rational number.
+
+    The definition of a rational number, a, is:
+
+        a = p / q   ; where p and q are integers and q > 0
+
+    Assume that log_10 2 is a rational number
+
+    log_10 2            = p / q        ; assumption
+    q log_10 2          = p         
+    log_10 2^q          = p
+    2^q                 = 10^p          ; QED
+
+14. [15] Prove log_b c^y = y log_b c, if c > 0
+    
+    log_b c^y = y log_b c
+    b^log_b c^y = b^{y log_b c}     ; (9) x = b^log_b x = log_b b^x
+    c^y = b^{y log_b c}             ; c^{xy} = c^{x}^y
+        = (b^{log_b c})^y
+      c = b^{y log_b c / y}
+      c = b^{log_b c}               ; (9)
+      c = c                         ; QED
+
+15. [10] Prove or disprove:
+
+    log_b x/y = log_b x - log_b y,    if x,y > 0
+
+    log_b x/y = log_b x - log_b y
+
+    let m = log_b x/y
+        n = log_b x
+        o = log_b y
+    then
+        b^m = x/y
+        b^n = x
+        b^o = y
+    finally
+        b^m = b^n / b^o
+            = b^{n - o}
+        x/y = b^{log_b x - log_b y}
+    log_b x/y = log_b b^{log_b x - log_b y}
+    log_b x/y = log_b x - log_b y       ; QED
+
+16. [00] How can log_10 x be expressed in terms of ln x and ln 10
+
+    log_b c = log_b x / log_c x ; 
+    ln 10 = ln x / log_10 x
+    log_10 x = ln x / ln 10
+
+17. [05] What is lg 32? log_\pi \pi? ln e? log_b 1? log_b (-1)?
+    
+    lg 32      = 5 ; 32 = 2^5
+    log_\pi    = 1 ; \pi^1 = \pi
+    ln e       = 1 ; e^1 = e
+    log_b 1    = 0 ; b^0 = 1
+    log_b (-1) =   
+    ln e^{pi i} = ln -1
+    pi i = log_e -1
+    log_e x = log_b x / log_b e
+    log_b x = log_e x * log_b e
+    log_b -1 = log_e -1 * log_b e
+             = pi * i * log_b e
+             = pi * i / ln b        ; log_b e = 1 / ln b
+
+19. [20] If n is an integer whose decimal representation is 14 digits long,
+    will the value of n fit ina computer word with a capacity of 47 bits and
+    a sign bit?
+
+    ...
+
+20. [10] Is there any simple relation between log_10 2 and log_2 10
+
+    ...
+
+23. [M25] Give a /geometric/ proof that ln xy = ln x + ln y, based on Figure 6
+
+    .
+    .
+     .
+      .
+        . 
+           .   (1, 1) 
+               * 
+               |      .            (x, 1/x)
+               |                      *              
+               |                      |                   .
+    -----------*----------------------*---------------------------
+            (1, 0)                    (x, 0)
+
+25. [22] Suppose that we have a binary computer and a number x, 1 <= x < 2.
+    Show that the following algorithm, which uses only shifting, addition, and
+    subtraction operations proportional to the number of places of accuracy
+    desired, may be used to calculate an pproximation to y = log_b x:
+
+    L1: [Initialize.] Set y <- 0, z <- x shifted right 1, k <- 1.
+    L2: [Test for end.] If x = 1, stop.
+    L3: [Compare.] If x - z < 1, set z <- z shifted right 1, k <- k +1, and repeat this step.
+    L4: [Reduce values.] Set x <- x - z, z <- x shifted riht, k, y <- y + log_b
+        (2^k/(2^k -1)), go to L2
+
+
