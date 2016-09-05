@@ -30,7 +30,7 @@ main:
 	call printf
 	add esp, 4*3
 
-	mov eax, 0
+	mov eax, 0	; Put 0 into eax (this is to return 0 from main.)
 	ret
 
 
