@@ -1,0 +1,4 @@
+fib
+fib.o
+*.sw[a-z]
+fib_c
